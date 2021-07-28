@@ -1,6 +1,6 @@
-﻿using Paia;
-using TutorialSample.Services;
+﻿using TutorialSample.Services;
 using TutorialSample.Views;
+using Paia;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace TutorialSample
@@ -12,7 +12,7 @@ namespace TutorialSample
             new AppBuilder()
                 .ConfigureServiceCollection(services => services.AddSingleton<IRandomSentenceGenerator, RandomSentenceGenerator>())
                 .Build()
-                .Run<MyFirstView>();
+                .Run<MyFirstView>(context => context.Message = "Yo World!");
         }
     }
 }

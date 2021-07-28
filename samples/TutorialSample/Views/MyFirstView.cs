@@ -1,6 +1,6 @@
-﻿using Paia.Attributes;
+﻿using TutorialSample.Services;
+using Paia.Attributes;
 using Paia.Views;
-using TutorialSample.Services;
 using System;
 
 namespace TutorialSample.Views
@@ -10,16 +10,20 @@ namespace TutorialSample.Views
         [Inject]
         public IRandomSentenceGenerator RandomSentenceGenerator { get; set; }
 
+        public string Message { get; set; }
+
         private string cachedSentence;
 
         public override ViewResult Render()
         {
+            Message ??= "Hello World!";
+
             Console.Clear();
 
             // This shows that ReRenderView() does not create a new instance.
             cachedSentence ??= RandomSentenceGenerator.GetRandomSentence();
 
-            Console.WriteLine("Hello World!");
+            Console.WriteLine(Message);
             Console.WriteLine("Cached sentence: " + cachedSentence);
             Console.WriteLine("Not cached sentence: " + RandomSentenceGenerator.GetRandomSentence());
 
@@ -29,7 +33,7 @@ namespace TutorialSample.Views
 
             return input switch
             {
-                '1' => ChangeView<MySecondView>(context => context.Message = "Hello :)"),
+                '1' => ChangeView<MySecondView>(context => context.Name = "Monkey Paia"),
                 '2' => Exit(),
                  _ => ReRenderView()
             };
