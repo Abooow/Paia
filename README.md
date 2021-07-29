@@ -1,12 +1,42 @@
-# Paia
-Paia is a CLI framework that enables you to easily render and change between different views in a Console application.
+<p align="center">
+  <a href="https://github.com/Abooow/Paia">
+    <img src="https://www.seekpng.com/png/full/74-740605_pie-icon-pumpkin-pie-clipart-transparent.png" alt="Pie" height="169">
+  </a>
+
+  <h1 align="center" style="border-bottom: none;">Paia 🐵🥧</h1>
+	<p align="center">
+    Paia is a CLI framework that enables you to easily render and change between different views in a Console application.
+  </p>
+  
+  <p align="center">
+    <a href="https://github.com/Abooow/Paia/network/members/" alt="Forks">
+      <img src="https://img.shields.io/github/forks/Abooow/Paia?style=flat-square" />
+    </a>
+    <a href="https://github.com/Abooow/Paia/stargazers/" alt="Stars">
+      <img src="https://img.shields.io/github/stars/Abooow/Paia?style=flat-square" />
+    </a>
+    <a href="https://github.com/Abooow/Paia/graphs/contributors" alt="Contributors">
+      <img src="https://img.shields.io/github/contributors/Abooow/Paia?style=flat-square" />
+    </a>
+    <a href="LICENSE" alt="License">
+      <img src="https://img.shields.io/github/license/Abooow/Paia?style=flat-square" />
+    </a>
+  </p>
+  
+  </br>
+  <p align="center">
+    <i><b>NOTE:</b> This is a <b>very</b> early version, a lot of code breaking changes will occur in later versions</i>
+  </p>
+</p>
 
 </br>
 
-***NOTE:** This is a **very** early version, a lot of code breaking changes will occur in later versions*
-___
+## Give a Star! :star:
+If you like the project, please consider giving it a star to raise awareness!
 
-**Table of Contents**
+</br>
+
+## Table of Contents
 - [Usage](#usage)
   - [Installing the library](#installing-the-library)
 - [Getting Started](#getting-started) 
@@ -21,8 +51,10 @@ ___
   - [Injecting a service](#injecting-a-service)
 - [More](#more)
   - [Exit() and exitcode](#exit-and-exitcode)
+- [Maintainers](#maintainers)
+- [License](#license)
 
-___
+</br>
 
 ## Usage
 See the [sample projects](./samples/) for a basic usage of the framework.
@@ -300,3 +332,11 @@ class MyFirstView : ViewBase
 }
 ```
 It's possible to also return an integer directly from a View, there is an implicit conversion from int to ViewResult. This is telling the View to exit with exitcode 69.
+
+</br>
+
+## Maintainers
+This repository is currently maintained by [@Abooow](https://github.com/Abooow).
+
+## License
+This project has been released under the MIT license. More information can be found by viewing the license [here](LICENSE).
