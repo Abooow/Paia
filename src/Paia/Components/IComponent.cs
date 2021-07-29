@@ -4,6 +4,8 @@
     {
         ViewManager ViewManager { get; set; }
 
+        void OnInitialized();
+
         void Render();
     }
 }

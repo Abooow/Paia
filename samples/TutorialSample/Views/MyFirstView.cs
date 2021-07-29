@@ -14,10 +14,13 @@ namespace TutorialSample.Views
 
         private string cachedSentence;
 
+        public override void OnInitialized()
+        {
+            Message = "Hello World!";
+        }
+
         public override ViewResult Render()
         {
-            Message ??= "Hello World!";
-
             Console.Clear();
 
             // This shows that ReRenderView() does not create a new instance.

@@ -57,6 +57,10 @@ namespace Paia
                     viewManager.AddView(result.ViewType);
                     break;
 
+                case ViewAction.RefreshView:
+                    viewManager.DiscardCurrentViewInstance();
+                    break;
+
                 case ViewAction.GoBack:
                     viewManager.ChangeToPreviousView();
                     break;
@@ -65,7 +69,7 @@ namespace Paia
                     viewManager.ChangeToNextView();
                     break;
 
-                case ViewAction.None:
+                case ViewAction.NoAction:
                 case ViewAction.Exit:
                 default:
                     break;

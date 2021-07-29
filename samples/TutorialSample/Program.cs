@@ -10,7 +10,7 @@ namespace TutorialSample
         private static void Main(string[] args)
         {
             new AppBuilder()
-                .ConfigureServiceCollection(services => services.AddSingleton<IRandomSentenceGenerator, RandomSentenceGenerator>())
+                .ConfigureServices(services => services.AddSingleton<IRandomSentenceGenerator, RandomSentenceGenerator>())
                 .Build()
                 .Run<MyFirstView>(context => context.Message = "Yo World!");
         }

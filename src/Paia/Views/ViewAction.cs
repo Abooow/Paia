@@ -2,8 +2,9 @@
 {
     public enum ViewAction
     {
-        None,
+        NoAction,
         ChangeView,
+        RefreshView,
         GoBack,
         GoForward,
         Exit

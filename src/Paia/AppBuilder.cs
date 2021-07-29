@@ -13,7 +13,7 @@ namespace Paia
             serviceCollection = new ServiceCollection();
         }
 
-        public AppBuilder ConfigureServiceCollection(Action<IServiceCollection> context)
+        public AppBuilder ConfigureServices(Action<IServiceCollection> context)
         {
             context?.Invoke(serviceCollection);
             return this;

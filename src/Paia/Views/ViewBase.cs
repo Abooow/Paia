@@ -12,14 +12,29 @@ namespace Paia.Views
             Render();
         }
 
-        public virtual ViewResult Render() 
+        // Don't force subclasses to override this method.
+        public virtual void OnInitialized() { }
+
+        public abstract ViewResult Render();
+
+        protected void RenderComponent<TComponent>() where TComponent : IComponent
         {
-            return ViewResult.Exit();
+            ViewManager.RenderComponent<TComponent>();
+        }
+
+        protected void RenderComponent<TComponent>(Action<TComponent> context) where TComponent : IComponent
+        {
+            ViewManager.RenderComponent<TComponent>(context);
         }
 
         protected static ViewResult ReRenderView()
         {
-            return new ViewResult(ViewAction.None);
+            return ViewResult.NoAction();
+        }
+
+        protected static ViewResult RefreshView()
+        {
+            return ViewResult.RefreshView();
         }
 
         protected static ViewResult ChangeView<TView>() where TView : IView
@@ -30,7 +45,7 @@ namespace Paia.Views
         protected static ViewResult ChangeView<TView>(Action<TView> context) where TView : IView
         {
             ViewResult viewResult = ViewResult.NewView<TView>();
-            viewResult.ViewContext = (x) => context.Invoke((TView)x);
+            viewResult.ViewContext = x => context.Invoke((TView)x);
 
             return viewResult;
         }

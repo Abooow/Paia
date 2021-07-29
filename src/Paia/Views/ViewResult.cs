@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Paia.Views
 {
@@ -18,9 +14,14 @@ namespace Paia.Views
             Action = action;
         }
 
-        public static ViewResult None()
+        public static ViewResult NoAction()
         {
-            return new ViewResult(ViewAction.None);
+            return new ViewResult(ViewAction.NoAction);
+        }
+
+        public static ViewResult RefreshView()
+        {
+            return new ViewResult(ViewAction.RefreshView);
         }
 
         public static ViewResult NewView<TView>() where TView : IView

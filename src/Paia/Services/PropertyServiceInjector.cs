@@ -3,26 +3,29 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Paia.Factories
+namespace Paia.Services
 {
-    internal sealed class InjectAttrObjectFactory
+    /// <summary>
+    /// Injects services into properties to a given Type whos properties that are labeled with an [Inject] attribute.
+    /// </summary>
+    internal sealed class PropertyServiceInjector : IInjectServices
     {
         private readonly Dictionary<Type, Action<IServiceProvider, object>> cachedInitializers;
 
-        public InjectAttrObjectFactory()
+        public PropertyServiceInjector()
         {
             cachedInitializers = new();
         }
 
-        public object InstantiateComponent(IServiceProvider serviceProvider, Type componentType)
+        public TInstance InjectServices<TInstance>(IServiceProvider serviceProvider, Type toType)
         {
-            var component = Activator.CreateInstance(componentType);
+            var component = Activator.CreateInstance(toType);
             if (component is null)
-                throw new InvalidOperationException($"The component activator returned a null value for a component of type {componentType.FullName}.");
+                throw new InvalidOperationException($"The component activator returned a null value for a component of type {toType.FullName}.");
 
             PerformPropertyInjection(serviceProvider, component);
 
-            return component;
+            return (TInstance)component;
         }
 
         public void ClearCache()
