@@ -81,10 +81,9 @@ $ git clone https://github.com/Abooow/Paia.git
 ## Getting Started
 Start by creating a new **Console Application**. </br>
 ```sh
-# .NET CLI command for creating a new console app
 $ dotnet new console -o "APP_NAME"
 ```
-***NOTE:** Paia is using **.NET 6*** </br>
+***NOTE:** Paia is built with **.NET 6*** </br>
 
 ### Initialize the App
 Add the following lines of code in `Program.cs`
@@ -222,7 +221,7 @@ class MyFirstView : ViewBase
   }
 }
 ```
-Going back to `MyFirstView`; the `ChangeView<MySecondView>()` method has a overload allowing an `Action\<MySecondView\>` to be passed as a argument. </br>
+Going back to `MyFirstView`; the `ChangeView<MySecondView>()` method has a overload allowing an `Action<MySecondView>` to be passed as a argument. </br>
 The example is showing an lambda where `context` is a reference to a **MySecondView** instance, which will be created by the framework. This is how we can access the `Name` property in order to assign a value to it. </br>
 </br>
 
@@ -236,7 +235,7 @@ class MyFirstView : ViewBase
 
   public override void OnInitialized()
   {
-    Message ??= "Hello World!";
+    Message = "Hello World!";
   }
 
   public override ViewResult Render()
@@ -258,9 +257,8 @@ class MyFirstView : ViewBase
 }
 ```
 The `OnInitialized()` method will be called only once per View instance, immediately after the constructor and right before the `Render()` method. Place your initialization code in the `OnInitialized()` method, avoid placing any "rendering" code here. </br>
-***NOTE:** The example is using the `??=` operator, which is known as the [null-coalescing assignment operator](https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator) (if **Message** is null, the string "Hello World!" will be assigned to it)* </br>
 </br>
-Passing data to the starting View is done in a similar manner as the previous section, by passing a `Action\<MyFirstView\>` as an argument, but to the `.Run<MyFirstView>()` method.
+Passing data to the starting View is done in a similar manner as the previous section, by passing a `Action<MyFirstView>` as an argument, but to the `.Run<MyFirstView>()` method.
 ```csharp
 static void Main(string[] args)
 {
